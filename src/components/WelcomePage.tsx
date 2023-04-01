@@ -16,7 +16,6 @@ interface CreateAvailabilityModalProps {
 }
 
 const mapDayOfWeekToNumber = (dayOfWeek: string): number => {
-  console.log("🚀 ~ file: WelcomePage.tsx:19 ~ mapDayOfWeekToNumber ~ dayOfWeek:", dayOfWeek)
   switch (dayOfWeek) {
     case 'Monday':
       return 1;
@@ -36,7 +35,6 @@ const mapDayOfWeekToNumber = (dayOfWeek: string): number => {
       throw new Error(`Invalid day of week: ${dayOfWeek}`);
   }
 }
-
 
 const CreateAvailabilityModal = ({ setAvailabilities }: any) => {
   const [dayOfWeek, setDayOfWeek] = useState('');
@@ -99,6 +97,7 @@ export default function WelcomePage({ name, logout }: any) {
     async function fetchAvailabilities() {
       try {
         const response = await axios.get('http://localhost:3000/availability');
+        console.log("🚀 ~ file: WelcomePage.tsx:11 ~ fetchAvailabilities ~ response:", response.data.data)
         setAvailabilities(response.data.data);
       } catch (error) {
         console.log(error);
